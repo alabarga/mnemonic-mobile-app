@@ -23,12 +23,17 @@
             <input type="password">
             <input type="password">
             <input type="password">
-            <input type="password">
+            <input type="password" onkeyup="enter()">
           </div>
         </form>
       </div>
     </main>
     <footer></footer>
+    <script>
+      function enter(){
+        window.location.replace("./documents.html")
+      }
+    </script>
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script src="../js/jquery-ui.js"></script>
     <script src="../js/main.js"></script>
