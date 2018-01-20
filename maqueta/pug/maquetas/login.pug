@@ -1,0 +1,19 @@
+//- Layout
+extends ../layouts/layoutLogin
+
+//- Configuracion de variables
+block variables
+	- bodyClasses = ['login'] 
+//- Contenido principal
+block content
+	main
+		div
+			.logo
+				img(src="../img/logoMnemonic.svg", alt="")
+			p Introduce password
+			form(action="")
+				.loginBox
+					input(type="password")
+					input(type="password")
+					input(type="password")
+					input(type="password")

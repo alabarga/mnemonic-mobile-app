@@ -1,0 +1,29 @@
+.login{
+	color: $colorW;
+	padding: 8rem 4rem;
+	background: #006699;
+	background: -moz-linear-gradient(top, #006699 0%, #00364c 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, #006699), color-stop(100%, #00364c));
+	background: -webkit-linear-gradient(top, #006699 0%, #00364c 100%);
+	background: -o-linear-gradient(top, #006699 0%, #00364c 100%);
+	background: -ms-linear-gradient(top, #006699 0%, #00364c 100%);
+	background: linear-gradient(to bottom, #006699 0%, #00364c 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006699', endColorstr='#00364c', GradientType=0 );
+	.loginBox{
+		display: flex;
+		> *{
+			font-size: 2em;
+			flex-grow: 1;
+			width: 0;
+			flex-basis:20%;
+			text-align: center;
+			margin: .5rem;
+			&:first-child{
+				margin-left: 0;
+			}
+			&:last-child{
+				margin-right: 0;
+			}
+		}
+	}
+}

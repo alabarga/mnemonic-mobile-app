@@ -1,0 +1,13 @@
+html {
+	font-size: 62.5%;
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	font-family: $font-regular;
+	font-size:$font-size-base;
+	color: $colorText;
+	background-color: $colorW;
+	margin:0;
+}
