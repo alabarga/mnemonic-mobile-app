@@ -1,0 +1,21 @@
+.message{
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	.titleInfo h1 strong{
+		font-size: 1.5em;
+	}
+}
+.logoHotel{
+	color: $colorBorder;
+	width: 14rem;
+    height: 14rem;
+    margin: 1rem auto;
+    font-size: 7em;
+    margin-bottom: 3rem;
+    border: 9px solid $colorBorder;;
+    border-radius: 50%;
+    text-align: center;
+}

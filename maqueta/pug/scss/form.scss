@@ -8,3 +8,24 @@ input{
 
 	}
 }
+.buttons{
+	display: flex;
+	justify-content: space-between;
+	margin-left: -.5rem;
+	margin-right: -.5rem;
+}
+.btn{
+	cursor: pointer;
+	font-family: $font-light;
+	text-decoration: none;
+	color: $colorW;
+	font-size: 2rem;
+	background-color: $colorO1;
+	padding: .5em 1em;
+	margin: .5rem;
+	text-align: center;
+	border-radius: 2px;
+	&.ko{
+		background-color: $colorBorder;
+	}
+}

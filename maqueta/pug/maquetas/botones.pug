@@ -1,0 +1,19 @@
+//- Layout
+extends ../layouts/layoutDefault
+
+//- Configuracion de variables
+block variables
+	- bodyClasses = [''] 
+
+//- Contenido principal
+block content
+	main
+		.message
+			.titleInfo
+				h1
+					strong Check my ID
+				ul.buttonsList
+					li
+						a.btn Bluetooth
+					li
+						a.btn NFC

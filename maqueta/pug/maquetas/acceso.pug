@@ -1,0 +1,19 @@
+//- Layout
+extends ../layouts/layoutDefault
+
+//- Configuracion de variables
+block variables
+	- bodyClasses = [''] 
+
+//- Contenido principal
+block content
+	main
+		.message
+			.titleInfo
+				.logoHotel H
+				h1
+					strong Hotel Gran Tuluka
+				h2 pide que le des acceso a leer tu documento de reserva
+			.buttons
+				a.btn.ko Denegar
+				a.btn.ok Aceptar
