@@ -36,28 +36,60 @@ window.App = {
 };
 
 function getDocuments() {
+    let totalDocuments = 0;
 
-    var result = mnemonic.getTotalDocuments(function(error, result) {
-        if (!error)
+    mnemonic.getTotalDocuments(function(error, result) {
+        if (!error){
+            totalDocuments = result;
+            $('#documentsNumber').text(totalDocuments);
             console.log("documents found in our vault: " + result);
-        else
+            getDocumentsData(totalDocuments);
+        }else{
             console.error(error);
+        }
     });
-    console.log(result);
-
-    var totalDocuments = 5;
 
     console.log("Own documents found in blockchain smart contract: " + totalDocuments);
+}
 
-
-    for (var i = totalDocuments; i > 0; i--) {
+function getDocumentsData(totalDocuments){
+  for (var i = totalDocuments; i > 0; i--) {
         var documentCode = mnemonic.getDocument(i, function(error, result) {
-            if (!error)
+            if (!error){
                 console.log("document found in our vault: " + result);
-            else
+                var documentName = result[0];
+                var time = result[4];
+                var formattedTime = getDateFromTimestamp(time);
+                console.log("NAME: " + documentName);
+                console.log("DATE: " + formattedTime);
+                var claims = 
+                $(".docsList").append("<li><div><h2>" + documentName + "</h2><p>" + formattedTime + "</p></div><div class='claims'><strong>" + getRandomArbitrary(1,5) + "</strong>claims</div></li>"
+                  );
+            }else{
                 console.error(error);
+            }
         });
     }
+}
+
+function getRandomArbitrary(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+function getDateFromTimestamp(timestamp){
+      // Create a new JavaScript Date object based on the timestamp
+    // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+    var date = new Date(timestamp*1000);
+
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    var hour = date.getHours();
+    var minutes = date.getMinutes();
+
+    var formattedTime = day + '-0' + month + '-' + year + " " + hour + ":" + minutes;
+    return formattedTime;
 }
 
 window.addEventListener('load', function() {
