@@ -11,7 +11,7 @@ import {
 } from 'web3';
 import {
     default as contract
-} from 'truffle-contract'
+} from 'truffle-contract';
 import mnemonicABI from '../contracts/MnemonicVault.json';
 
 var mnemonicContract = web3.eth.contract(mnemonicABI.abi);
@@ -29,9 +29,16 @@ const ipfs = ipfsAPI({
 window.App = {
     start: function() {
         var self = this;
+
         $(document).ready(function() {
-            getDocuments();
-        });
+          let path = document.location.pathname;
+	  if (path == "/grant.html") {
+            showGrantRequest();	    
+	  } else if (path == "/documents.html") {
+	      watchBlockchainEvents();
+	      getDocuments();
+	  }	    
+        });	
     }
 };
 
@@ -58,6 +65,41 @@ function getDocuments() {
                 console.error(error);
         });
     }
+}
+
+function watchBlockchainEvents() {
+
+  web3.eth.getBlockNumber(function(err, currentBlockNumber) {
+    if (err) {
+      console.error(err);	  
+    } else {
+      console.log("Watching GrantRequested events from block number " + currentBlockNumber);
+      var grantRequestedEvent = mnemonic.GrantRequested({}, {fromBlock: currentBlockNumber});
+      grantRequestedEvent.watch(function(err, result) {
+        if (err) {
+          console.log(err)
+        } else {
+          notifyGrantRequested(result.args);
+        }
+      });    
+    }	
+  });  
+}
+
+function notifyGrantRequested(args) {
+  console.log("Notify GrantRequested event: " + JSON.stringify(args));
+  document.location.href = "/grant.html?documentKey=" + args[_key] + "&requestor=" + args["_requestor"];
+}
+
+function showGrantRequest() {
+  let params = new URLSearchParams(window.location.search);
+  let documentKey = params.get('documentKey');
+  let requestor = params.get('requestor');
+    
+  $("#request").html(
+      "<h1>Received grant request to check the doc <strong>" + documentKey +
+      "</strong> by <strong>" + requestor + "</strong></h1>");
+  $("#request").show();    
 }
 
 window.addEventListener('load', function() {
