@@ -42,31 +42,31 @@
     <script type="text/javascript">
         function denegar(){
              $.ajax({
-                url:   'http://10.105.36.1/denegar',
+                url:   'http://10.105.36.95:3000/closeDoor',
                 type:  'get',
                 beforeSend: function () {
                         $("#resultado").html("Procesando, espere por favor...");
                 },
                 success:  function (response) {
                         $("#resultado").html(response);
+                        document.location.href = "documents.html"; 
                 }
             });
-            document.location.href = "documents.html"; 
         }
 
 
         function aceptar(){
             $.ajax({
-                url:   'http://10.105.36.1/aceptar',
+                url:   'http://10.105.36.95:3000/openDoor',
                 type:  'get',
                 beforeSend: function () {
                         $("#resultado").html("Procesando, espere por favor...");
                 },
                 success:  function (response) {
                         $("#resultado").html(response);
+                        document.location.href = "documents.html"; 
                 }
             });
-          document.location.href = "documents.html"; 
         }
 
 
