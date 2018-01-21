@@ -12,7 +12,8 @@ module.exports = {
     new CopyWebpackPlugin([
 	{ from: './maqueta/html/maquetas/acceso.html', to: "acceso.html" },
 	{ from: './maqueta/html/maquetas/index.html', to: "documents.html" },
-	{ from: './maqueta/html/maquetas/botones.html', to: "botones.html" },	
+	{ from: './maqueta/html/maquetas/botones.html', to: "botones.html" },
+	{ from: './maqueta/html/maquetas/grant.html', to: "grant.html" },
 	{ from: './maqueta/html/maquetas/login.html', to: "index.html" }
     ])
   ],

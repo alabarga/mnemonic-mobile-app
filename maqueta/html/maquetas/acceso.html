@@ -20,9 +20,10 @@
         <div class="collapsible-header"><span></span><span></span><span></span></div>
         <div class="collapsible-content">
           <ul>
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
+            <li><a href="documents.html">Mis documentos</a></li>
+            <li><a href="botones.html">Conexión IOT</a></li>
+            <li><a href="#">Insertar documentos</a></li>
+            <li><a href="index.html">Salir</a></li>
           </ul>
         </div>
       </div>
@@ -34,10 +35,43 @@
           <h1><strong>Hotel Gran Tuluka</strong></h1>
           <h2>pide que le des acceso a leer tu documento de reserva</h2>
         </div>
-        <div class="buttons"><a class="btn ko">Denegar</a><a class="btn ok">Aceptar</a></div>
+        <div class="buttons"><a onclick="denegar()" class="btn ko">Denegar</a><a onclick="aceptar()" class="btn ok">Aceptar</a></div>
       </div>
     </main>
     <footer></footer>
+    <script type="text/javascript">
+        function denegar(){
+             $.ajax({
+                url:   'http://10.105.36.1/denegar',
+                type:  'get',
+                beforeSend: function () {
+                        $("#resultado").html("Procesando, espere por favor...");
+                },
+                success:  function (response) {
+                        $("#resultado").html(response);
+                }
+            });
+            document.location.href = "documents.html"; 
+        }
+
+
+        function aceptar(){
+            $.ajax({
+                url:   'http://10.105.36.1/aceptar',
+                type:  'get',
+                beforeSend: function () {
+                        $("#resultado").html("Procesando, espere por favor...");
+                },
+                success:  function (response) {
+                        $("#resultado").html(response);
+                }
+            });
+          document.location.href = "documents.html"; 
+        }
+
+
+
+    </script>
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script src="../js/jquery-ui.js"></script>
     <script src="../js/main.js"></script>

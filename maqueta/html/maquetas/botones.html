@@ -33,13 +33,20 @@
         <div class="titleInfo">
           <h1><strong>Check my ID</strong></h1>
           <ul class="buttonsList">
-            <li><a class="btn">Bluetooth</a></li>
+            <li><a onclick="setTimeout(conectarIOT, 6000)" class="btn">Bluetooth</a></li>
             <li><a class="btn">NFC</a></li>
           </ul>
         </div>
       </div>
     </main>
     <footer></footer>
+    <script type="text/javascript">
+      function conectarIOT(){
+        document.location.href = "acceso.html";
+      }
+
+
+    </script>
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script src="../js/jquery-ui.js"></script>
     <script src="../js/main.js"></script>
